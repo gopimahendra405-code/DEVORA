@@ -1,0 +1,9 @@
+{
+  "name": "StudyBuddy AI",
+  "short_name": "StudyBuddy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#0b1020",
+  "description": "AI-powered active learning companion"
+}

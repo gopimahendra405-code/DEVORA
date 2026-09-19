@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <title>StudyBuddy AI</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div><strong>StudyBuddy</strong><span>AI Learning Lab</span></div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-btn" data-view="library">▣ <span>My Materials</span></button>
+        <button class="nav-btn" data-view="learn">✦ <span>Learn</span></button>
+        <button class="nav-btn" data-view="progress">◔ <span>Progress</span></button>
+      </nav>
+      <div class="side-card">
+        <span class="small-label">TODAY'S GOAL</span>
+        <strong id="goalText">0 / 20 XP</strong>
+        <div class="progress"><i id="goalBar"></i></div>
+        <small>Keep your recall streak alive.</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">ACTIVE LEARNING</span>
+          <h1 id="pageTitle">Good study session 👋</h1>
+        </div>
+        <div class="stats">
+          <div><span>🔥</span><b id="streak">0</b><small>streak</small></div>
+          <div><span>⚡</span><b id="xp">0</b><small>XP</small></div>
+        </div>
+      </header>
+
+      <section id="dashboard" class="view active">
+        <div class="hero">
+          <div>
+            <span class="pill">AI-POWERED STUDY</span>
+            <h2>Turn notes into <em>knowledge.</em></h2>
+            <p>Upload a PDF or notes and StudyBuddy creates summaries, flashcards and quizzes for active recall.</p>
+            <label class="upload-btn">
+              <input id="fileInput" type="file" accept=".pdf,.txt,.md">
+              <span>＋ Upload study material</span>
+            </label>
+            <div id="uploadStatus" class="status"></div>
+          </div>
+          <div class="hero-orb"><div>✦</div></div>
+        </div>
+
+        <div class="section-head"><div><span class="eyebrow">OVERVIEW</span><h3>Your learning cockpit</h3></div></div>
+        <div class="cards">
+          <div class="metric"><span class="icon">◈</span><b id="materialCount">0</b><small>materials</small></div>
+          <div class="metric"><span class="icon">▤</span><b id="cardCount">0</b><small>flashcards</small></div>
+          <div class="metric"><span class="icon">✓</span><b id="quizCount">0</b><small>quiz questions</small></div>
+          <div class="metric"><span class="icon">⚡</span><b id="dashboardXp">0</b><small>XP earned</small></div>
+        </div>
+
+        <div class="section-head"><div><span class="eyebrow">RECENT</span><h3>Study materials</h3></div><button class="text-btn" data-view="library">View all →</button></div>
+        <div id="recentMaterials" class="material-grid"></div>
+      </section>
+
+      <section id="library" class="view">
+        <div class="section-head"><div><span class="eyebrow">LIBRARY</span><h2>My Materials</h2><p>Every upload becomes a reusable active-learning set.</p></div></div>
+        <div id="libraryGrid" class="material-grid"></div>
+      </section>
+
+      <section id="learn" class="view">
+        <div id="learnEmpty" class="empty">
+          <div>✦</div><h2>Choose a study set</h2><p>Upload material first, then open it from My Materials.</p>
+        </div>
+        <div id="learnContent" class="learn-layout hidden">
+          <div class="learn-main">
+            <div class="section-head"><div><span class="eyebrow">ACTIVE RECALL</span><h2 id="learnTitle">Study Set</h2></div></div>
+            <div class="summary-box"><h3>AI Summary</h3><p id="summary"></p><div id="concepts" class="chips"></div></div>
+            <div class="flashcard-wrap">
+              <div class="flashcard" id="flashcard">
+                <div class="fc-label">FLASHCARD <span id="cardNumber">1 / 1</span></div>
+                <div class="fc-content"><h2 id="cardFront">Question</h2><p id="cardBack" class="hidden"></p></div>
+                <button id="revealBtn" class="primary">Reveal answer</button>
+              </div>
+              <div class="card-actions">
+                <button id="prevCard" class="secondary">← Previous</button>
+                <button id="knowBtn" class="primary">I know it +5 XP</button>
+                <button id="nextCard" class="secondary">Next →</button>
+              </div>
+            </div>
+          </div>
+          <aside class="quiz-panel">
+            <span class="eyebrow">QUICK CHECK</span><h3>Mini Quiz</h3>
+            <div id="quiz"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="progress" class="view">
+        <div class="section-head"><div><span class="eyebrow">YOUR JOURNEY</span><h2>Progress</h2><p>Small sessions compound into stronger recall.</p></div></div>
+        <div class="progress-hero">
+          <div class="big-xp"><span>⚡</span><b id="bigXp">0</b><small>Total XP</small></div>
+          <div><h3 id="levelName">Starter Scholar</h3><p id="levelText">Earn XP by reviewing flashcards and completing quizzes.</p><div class="progress large"><i id="levelBar"></i></div></div>
+        </div>
+        <div class="cards">
+          <div class="metric"><span class="icon">🔥</span><b id="pStreak">0</b><small>day streak</small></div>
+          <div class="metric"><span class="icon">▤</span><b id="pCards">0</b><small>cards reviewed</small></div>
+          <div class="metric"><span class="icon">✓</span><b id="pQuizzes">0</b><small>quizzes completed</small></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
